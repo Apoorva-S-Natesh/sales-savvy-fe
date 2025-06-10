@@ -1,51 +1,20 @@
-import Sign_in from "./pages/Sign_in";
-import Sign_up from "./pages/Sign_up";
+import { Route, Routes } from "react-router-dom";
+import Welcome from "./pages/Welcome";
+import Sign_up from "./pages/Sign_up"
+import Sign_in from "./pages/Sign_in"
+
 
 function App() {
 
   return (
     <>
-      <Sign_up />
-	  <hr></hr>
-	  <Sign_in />
+	<Routes>
+		<Route path="/" element={<Welcome />} />
+	 	<Route path="/Sign_up" element={<Sign_up />} />
+	 	<Route path="/Sign_in" element={<Sign_in />} />
+	</Routes>
     </>
   )
 }
 
 export default App
-
-// import { useState } from "react";
-
-// function App() {
-
-// 	const [username, setUsername] = useState('')
-	
-// 	function handleChange(e){
-// 		setUsername(e.target.value)
-// 	}
-
-// 	async function handleSubmit(e) {
-// 		e.preventDefault() //for avoiding automatic submission
-// 		const resp = await fetch('http://localhost:8080/data',
-// 			{
-// 				method: 'POST',
-// 				body: JSON.stringify({'username': username})
-// 			});
-// 		const msg = await resp.text(
-// 		alert(msg)
-// 		)
-// 	}
-//    return (
-//     <>
-//       <h4>Welcome to Sales Savvy!</h4>
-// 	  <form onSubmit={handleSubmit}>
-// 		<label>Enter username: </label>
-// 		<input type = "text" name = "username" value = {usrname} 
-// 		onChange={handleChange}></input>
-// 		<button type="submit">SEND</button>
-// 	  </form>
-//     </>
-//   )
-// }
-
-// export default App
