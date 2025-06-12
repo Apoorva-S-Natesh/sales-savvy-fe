@@ -27,7 +27,7 @@ export default function Customer_home() {
       await fetch("http://localhost:8080/addToCart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId: product.id, qty: 1 }),
+        body: JSON.stringify({ productId: product.id, username: username, quantity }),
       });
       alert(`Added “${product.name}” to cart`);
     } catch (err) {
