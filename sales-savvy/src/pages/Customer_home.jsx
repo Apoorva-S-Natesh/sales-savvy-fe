@@ -6,10 +6,9 @@ export default function Customer_home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading]   = useState(true);
   const [error, setError]       = useState("");
+  const [search, setSearch]     = useState("");
 
   const navigate = useNavigate();
-
-  const [search, setSearch] = useState("");
 
   /* fetch catalogue once */
   useEffect(() => {
