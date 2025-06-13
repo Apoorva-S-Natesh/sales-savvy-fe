@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 
 /**
  * Horizontal product card.
@@ -6,29 +6,47 @@ import React from "react";
  * { id, name, price, category, description, imageUrl }
  */
 export default function ProductCard({ product, onAddToCart }) {
-  return (
-    <div className="product-card">
-      <div className="product-img-wrap">
-        {/* Fallback image if none provided */}
+	
+	const[qty, setQty] = useState(1);
+	if(!product) return null;
+
+	const inc = () => setQty((q)=>q+1);
+	const dec = () => setQty((q) => Math.max(1, q - 1));
+
+	return (
+    <article className="product-card">
+
+      {/* thumbnail */}
+      <figure className="product-img-wrap">
         <img
-          src={product.imageUrl || "/placeholder.png"}
+          src={product.photo || "/placeholder.png"}
           alt={product.name}
           loading="lazy"
+          onError={(e) => (e.target.src = "/placeholder.png")}
         />
-      </div>
+      </figure>
 
+      {/* text + CTA */}
       <div className="product-info">
+
         <h3 className="product-title">{product.name}</h3>
-        <p className="product-price">₹{product.price}</p>
-        <p className="product-desc">{product.description}</p>
+        <p  className="product-price">₹{product.price}</p>
+        <p  className="product-desc">{product.description}</p>
+
+        {/* qty selector */}
+        <div className="qty-control">
+          <button onClick={dec} aria-label="decrease quantity">−</button>
+          <span>{qty}</span>
+          <button onClick={inc} aria-label="increase quantity">+</button>
+        </div>
 
         <button
           className="btn btn-primary btn-sm"
-          onClick={() => onAddToCart(product)}
+          onClick={() => onAddToCart(product, qty)}
         >
           Add to cart
         </button>
       </div>
-    </div>
+    </article>
   );
 }
