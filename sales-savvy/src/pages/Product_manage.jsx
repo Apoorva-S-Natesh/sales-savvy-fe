@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function Product_management() {
   return (
-	<>
+	<div className="admin-links">
 		<h3>Manage your product here:</h3>
 		<NavLink to = "/addProd">Add new Product</NavLink>
 		<br></br>
@@ -12,6 +12,6 @@ export default function Product_management() {
 		<NavLink to = "/searchProd">Search Product</NavLink>
 		<br></br>
 		<NavLink to = "/deleteProd">Delete Product</NavLink>
-	</>
+	</div>
   )
 }
